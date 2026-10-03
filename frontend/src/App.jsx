@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import MatchDetails from "./pages/MatchDetails";
+import Teams from "./pages/Teams";
+import Players from "./pages/Players";
 import "./App.css";
 
 function App() {
@@ -13,11 +15,10 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/live"
-            element={<Home key="live" initialFilter="live" />}
-          />
+          <Route path="/live" element={<Home key="live" initialFilter="live" />} />
           <Route path="/matches/:id" element={<MatchDetails />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/players" element={<Players />} />
           <Route path="*" element={<Home />} />
         </Routes>
 
@@ -32,6 +33,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 export default App;

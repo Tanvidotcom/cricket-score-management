@@ -1,6 +1,6 @@
 
 import { NavLink } from "react-router-dom";
-import { Activity, Trophy } from "lucide-react";
+import { Activity, Trophy, Shield, Users } from "lucide-react";
 
 function Navbar() {
   return (
@@ -20,6 +20,14 @@ function Navbar() {
           <NavLink to="/live">
             <Activity size={16} />
             Live Scores
+          </NavLink>
+          <NavLink to="/teams">
+            <Shield size={16} />
+            Teams
+          </NavLink>
+          <NavLink to="/players">
+            <Users size={16} />
+            Players
           </NavLink>
         </nav>
 

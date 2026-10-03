@@ -946,3 +946,305 @@
     padding: 17px;
   }
 }
+
+/* Team and player management */
+
+.management-page {
+  padding-top: 42px;
+  padding-bottom: 65px;
+}
+
+.management-heading {
+  margin-bottom: 30px;
+}
+
+.management-heading h1 {
+  margin: 8px 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  letter-spacing: -1.2px;
+}
+
+.management-heading p,
+.management-form-title p,
+.management-list-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.management-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.management-form,
+.management-list {
+  min-width: 0;
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.management-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.management-form-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 3px;
+}
+
+.management-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--brown);
+  border-radius: 13px;
+  background: #f3ebdf;
+}
+
+.management-form-title h2,
+.management-list-heading h2 {
+  margin: 0 0 3px;
+  font-family: "Manrope", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.management-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #51483e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.management-form input,
+.management-form select {
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 12px;
+  color: var(--ink);
+  border: 1px solid #e4dbcf;
+  border-radius: 10px;
+  outline: none;
+  background: #fffefa;
+  font: inherit;
+  font-size: 13px;
+}
+
+.management-form input:focus,
+.management-form select:focus {
+  border-color: #aa7847;
+  box-shadow: 0 0 0 3px rgba(170, 120, 71, 0.12);
+}
+
+.management-form input::placeholder {
+  color: #aaa094;
+}
+
+.management-form .primary-button,
+.management-form .secondary-button {
+  min-height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.management-form .primary-button {
+  color: white;
+  border: 1px solid var(--brown);
+  background: var(--brown);
+}
+
+.management-form .primary-button:hover {
+  background: var(--brown-dark);
+}
+
+.management-form .primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.management-form .secondary-button {
+  color: var(--brown);
+  border: 1px solid #dfd1bf;
+  background: #fffefa;
+}
+
+.form-feedback {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.error-text {
+  color: var(--red);
+}
+
+.success-text {
+  color: var(--green);
+}
+
+.management-list {
+  overflow: hidden;
+}
+
+.management-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  color: #796a59;
+  border: 1px solid #e9e2d8;
+  border-radius: 9px;
+  background: #fffefa;
+}
+
+.icon-button:hover {
+  color: var(--brown);
+  background: #f5eee4;
+}
+
+.icon-button.delete-action:hover {
+  color: var(--red);
+  border-color: #e9c7bf;
+  background: #fff2ef;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.management-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.management-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.management-table th {
+  padding: 12px 10px;
+  color: #887b6c;
+  background: #f7f3ec;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.management-table td {
+  padding: 12px 10px;
+  color: #72685d;
+  border-bottom: 1px solid #f0ece5;
+}
+
+.management-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.management-table .table-primary {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.management-empty {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: var(--muted);
+  border: 1px dashed #ddd2c4;
+  border-radius: 13px;
+  background: rgba(255, 254, 250, 0.65);
+  text-align: center;
+  font-size: 12px;
+}
+
+.management-empty strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.management-empty span {
+  max-width: 250px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .management-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .management-form {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .management-page {
+    padding-top: 28px;
+  }
+
+  .navbar-inner {
+    height: auto;
+    min-height: 66px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+
+  .nav-links {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .nav-links a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .management-form,
+  .management-list {
+    padding: 16px;
+  }
+
+  .management-table {
+    min-width: 480px;
+  }
+}

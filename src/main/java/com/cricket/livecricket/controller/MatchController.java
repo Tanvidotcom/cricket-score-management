@@ -31,12 +31,13 @@ public class MatchController {
     }
 
     @GetMapping("/live")
-    public List<MatchResponse> getLiveMatches() {
-        return matchRepository.findByStatusIgnoreCase("Live")
-                .stream()
-                .map(this::toResponse)
-                .toList();
-    }
+public List<MatchResponse> getLiveMatches() {
+    return matchRepository
+            .findByStatusIgnoreCaseOrderByLastUpdatedAtDesc("LIVE")
+            .stream()
+            .map(this::toResponse)
+            .toList();
+}
 
     @GetMapping("/{id}")
     public MatchResponse getMatchById(@PathVariable Long id) {

@@ -75,10 +75,20 @@ public class MatchSyncService {
                 match.setMatchType(type);
             }
 
-            String status = matchData.path("status").asText("");
-            if (!status.isBlank()) {
-                match.setStatus(status);
-            }
+            boolean matchStarted = matchData.path("matchStarted").asBoolean(false);
+boolean matchEnded = matchData.path("matchEnded").asBoolean(false);
+
+String status;
+
+if (matchEnded) {
+    status = "COMPLETED";
+} else if (matchStarted) {
+    status = "LIVE";
+} else {
+    status = "UPCOMING";
+}
+
+match.setStatus(status);
 
             String venue = matchData.path("venue").asText("");
             if (!venue.isBlank()) {
