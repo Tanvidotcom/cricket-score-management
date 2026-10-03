@@ -8,8 +8,10 @@ A web-based cricket score management application built using **React, Spring Boo
 - **Live Scores:** Filter matches by live, upcoming, and completed status.
 - **Match Search:** Search matches by team name, match title, or venue.
 - **Match Details:** View match information and available score history.
+- **Team Management:** Create, view, and manage cricket teams.
+- **Player Management:** Add, view, and manage players associated with teams.
 - **External Cricket API:** Fetch match data from CricAPI rather than relying on simulated scores.
-- **Database Persistence:** Store match information in MySQL using Spring Data JPA.
+- **Database Persistence:** Store match, team, and player information in MySQL using Spring Data JPA.
 - **Match Synchronization:** Synchronize external match data with the local database.
 - **Auto Refresh:** The frontend periodically checks the backend for updated match information.
 - **Responsive UI:** Beige-themed interface designed for desktop and mobile screens.
@@ -48,34 +50,6 @@ Additional libraries used:
 - Spring RestClient: make HTTP requests to the external CricAPI service
 - Axios: communicate between the React frontend and Spring Boot backend.
 - React Router DOM: navigate between frontend pages.
-
-## System Architecture
-
-The application follows a client-server architecture.
-
-```text
-          CricAPI
-             |
-             v
-     Spring Boot Backend
-        (REST APIs)
-             |
-             v
-        MySQL Database
-             |
-             v
-       React Frontend
-             |
-             v
-          User
-```
-
-### Architecture Components
-
-- **React Frontend:** Displays match information, provides search and filtering, and communicates with the backend through HTTP requests.
-- **Spring Boot Backend:** Exposes REST endpoints, retrieves external match data, processes synchronization, and manages database operations.
-- **MySQL Database:** Stores match information and supports score snapshot persistence.
-- **CricAPI:** Supplies external cricket match data to the backend.
 
 ## Project Structure
 
@@ -184,7 +158,7 @@ server.port=8081
 
 spring.datasource.url=jdbc:mysql://localhost:3307/live_cricket_db
 spring.datasource.username=root
-spring.datasource.password=
+spring.datasource.password=YOUR_MYSQL_PASSWORD
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.hibernate.ddl-auto=update
@@ -195,7 +169,7 @@ spring.jpa.open-in-view=false
 spring.config.import=optional:file:./application-secret.properties
 
 cricket.api.base-url=https://api.cricapi.com/v1
-cricket.api.refresh-interval=60000
+cricket.api.refresh-interval=1800000
 ```
 
 Update the MySQL port, username, and password according to your local configuration.
@@ -279,8 +253,8 @@ The backend exposes REST endpoints for health checks, match retrieval, external 
 | GET | `/api/matches/{id}` | Retrieve a match by its database ID |
 | GET | `/api/external/matches` | Retrieve match data from the external cricket API |
 | POST | `/api/matches/sync` | Synchronize match data to the database |
-
-The React match-details page also requests `/api/matches/{id}/scores` for score snapshots. This route must be provided by the backend score controller for score history to load.
+| api/teams | Team management | Manage cricket teams
+| api/players | Player management | Manage players and their associated teams
 
 ## Testing the Application
 
@@ -289,8 +263,9 @@ The React match-details page also requests `/api/matches/{id}/scores` for score 
 3. Open `http://localhost:8081/api/health` to check backend availability.
 4. Open `http://localhost:8081/api/matches` to check the stored match endpoint.
 5. Trigger synchronization using the POST endpoint.
-6. Start the React frontend and open the Vite URL.
-7. Check match cards, search, filters, and match details.
+6. Open /api/teams and /api/players to check the team and player endpoints. 
+7. Start the React frontend and open the Vite URL.
+8. Check match cards, search, filters, match details, team management, and players. 
 
 ## Troubleshooting
 
@@ -323,8 +298,10 @@ Ensure the backend allows requests from the frontend origin, such as `http://loc
 
 
 ## Screenshots
-<img width="1917" height="871" alt="Screenshot 2026-10-02 202912" src="https://github.com/user-attachments/assets/b0425f63-a10f-4ce9-813d-9d5309558096" />
-<img width="1917" height="872" alt="Screenshot 2026-10-02 202938" src="https://github.com/user-attachments/assets/21e49599-eef1-494b-a706-176ea53d696d" />
-<img width="1917" height="867" alt="Screenshot 2026-10-02 202951" src="https://github.com/user-attachments/assets/e4a290d4-32cf-4214-94ab-4c2d75c0e784" />
-<img width="1917" height="870" alt="Screenshot 2026-10-02 203004" src="https://github.com/user-attachments/assets/9a9a09a1-99f0-4234-adbd-71c4d74956ee" /> 
-<img width="1917" height="855" alt="Screenshot 2026-10-02 203038" src="https://github.com/user-attachments/assets/20dfde34-a32e-44eb-a65d-d4a89c06e7b6" />
+<img width="1910" height="877" alt="Screenshot 2026-10-03 164232" src="https://github.com/user-attachments/assets/3a572405-5cea-42fe-855a-8ab3faf0a3a2" />
+<img width="1917" height="872" alt="Screenshot 2026-10-03 164243" src="https://github.com/user-attachments/assets/32d35184-9d43-4751-84e7-2de6f12dafc5" />
+<img width="1917" height="872" alt="Screenshot 2026-10-03 164300" src="https://github.com/user-attachments/assets/49948879-8ca5-4736-b905-21cb8bbc7082" />
+<img width="1915" height="870" alt="Screenshot 2026-10-03 164320" src="https://github.com/user-attachments/assets/bb4decf1-97f8-43fd-8f9f-ac2903b5bf87" />
+<img width="1917" height="872" alt="Screenshot 2026-10-03 164328" src="https://github.com/user-attachments/assets/cf8188ad-2738-4b9d-ba4f-4ea4ff642eeb" />
+<img width="1917" height="867" alt="Screenshot 2026-10-03 164345" src="https://github.com/user-attachments/assets/fc9acd5c-aa15-45a1-aca4-9f7e7ab55690" />
+<img width="1917" height="867" alt="Screenshot 2026-10-03 164407" src="https://github.com/user-attachments/assets/8fe5db02-e2aa-482b-a33e-89407fd8ab0e" />
